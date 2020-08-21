@@ -13,15 +13,22 @@ app.use(express.urlencoded({ extended : false }));
 
 //create
 app.post('/insert', (request, response) => {
+const { name } = request.body;
+response.json({msg:'added name', name})
+
 
 });
 
 //read
 app.get('/getAll', (request, response) => { 
+const db = dbService.getDBServiceInstance();
 
-response.json({
-    success: true
-})
+const result = db.getAllData();
+
+result
+.then(data => response.json({data : data}))
+.catch(err => console.log(err));
+
 });
 
 //update
