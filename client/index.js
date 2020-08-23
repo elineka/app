@@ -22,7 +22,7 @@ addBtn.addEventListener('click', function () {
         body: JSON.stringify({ name : name})
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data =>  insertRowIntoTable(data['data'])) 
     .catch((error) => {
         console.log(error)
     })
@@ -31,7 +31,7 @@ addBtn.addEventListener('click', function () {
 }) 
 
 function insertRowIntoTable(data) {
-console.log(data)
+
 }
 
 
