@@ -40,6 +40,17 @@ result
 
 
 //delete
+app.delete('/delete/:id', (request, response) => {
+const { id } = request.params;
+const db = dbService.getDBServiceInstance();
+
+const result = db.deleteRowById(id);
+
+result
+.then(data => response.json({success : data}))
+.catch(err => console.log(err));
+
+})
 
 const PORT = 5000 || process.env.PORT
 app.listen(PORT, () => console.log('app is running', PORT));
