@@ -49,8 +49,11 @@ async insertNewName(name) {
                 resolve(result.insertId);
             })
             } )
-            console.log(insertId);
-            //return response;
+           return {
+               id : insertId,
+               name : name,
+               dateAdded : dateAdded
+           };
 
     } catch (error) {
         console.log(error); 
