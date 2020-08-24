@@ -37,6 +37,18 @@ result
 });
 
 //update
+app.patch('/update', (request, response) => {
+    const { id, name } = request.body;
+    const db = dbService.getDBServiceInstance();
+
+    const result = db.updateRowById(id, name);
+
+result
+.then(data => response.json({ success : data}))
+.catch(err => console.log(response));
+
+
+})
 
 
 //delete

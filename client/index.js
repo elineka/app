@@ -10,6 +10,9 @@ document.querySelector('table tbody').addEventListener('click', function (event)
 if (event.target.className === "delete-row-btn") {
      deleteRowById(event.target.dataset.id);
 }
+if (event.target.className === "edit-row-btn") {
+    handleEditRow(event.target.dataset.id);
+}
 })
 
 function deleteRowById(id) {
@@ -24,6 +27,33 @@ fetch('http://localhost:5000/delete/' + id,
     }
 });
 }
+
+function handleEditRow(id ) {
+    const updateSection = document.querySelector('#update-row');
+    updateSection.hidden = false;
+    document.querySelector('#update-row-btn').dataset.id = id;
+}
+const updateBtn = document.querySelector("#update-row-btn");
+
+updateBtn.addEventListener('click', function() {
+    const updateNameInput = document.querySelector('#update-name-input');
+    fetch('http://localhost:5000/update', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            id: updateBtn.dataset.id,
+            name: updateNameInput.value
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+if (data.success) {
+    location.reload();
+}
+    })
+}) 
 
 const addBtn = document.querySelector("#add-name-btn");
 
