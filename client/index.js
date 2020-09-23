@@ -35,6 +35,7 @@ function handleEditRow(id ) {
 }
 const updateBtn = document.querySelector("#update-row-btn");
 
+
 updateBtn.addEventListener('click', function() {
     const updateNameInput = document.querySelector('#update-name-input');
     fetch('http://localhost:5000/update', {
@@ -54,6 +55,14 @@ if (data.success) {
 }
     })
 }) 
+
+const searchBtn = document.querySelector("#search-btn");
+searchBtn.addEventListener('click', function() {
+    const searchValue = document.querySelector('#search-input').value;
+    fetch('http://localhost:5000/search/' + searchValue)
+    .then(response => response.json())
+    .then(data =>  insertRowIntoTable(data['data']))
+})
 
 const addBtn = document.querySelector("#add-name-btn");
 

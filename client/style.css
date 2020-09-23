@@ -1,8 +1,8 @@
-main {
-    width: 50%;
-    margin: 50px auto;
-    text-align: center;
-}
+* {
+    box-sizing: border-box;
+  }
+
+
 
 table {
     margin: 50px auto;
@@ -16,3 +16,88 @@ table, th, td {
 th, td {
     padding: 5px;
 }
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+   
+  }
+  
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+    main {
+        background-color: pink;
+        width: 50%;
+        margin: 50px auto;
+        text-align: center;
+        padding: 10px;
+    }
+  }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    main {
+        background-color: pink;
+        width: 50%;
+        margin: 50px auto;
+        text-align: center;
+        padding: 10px;
+    }
+  } 
+
+  /* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    main {
+        background-color: orange;
+        width: 50%;
+        margin: 50px auto;
+        text-align: center;
+        padding: 10px;
+    }
+  } 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    main {
+        background-color: orange;
+        width: 70%;
+        margin: 50px auto;
+        text-align: center;
+        padding: 7px;
+    }
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    main {
+        background-color: orange;
+        width: 100%;
+        margin: 50px auto;
+        text-align: center;
+        padding: 5px;
+    }
+  }
+  
+  
+  

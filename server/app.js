@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 const dbService = require('./dbService.js');
+const { request } = require('express');
 
 
 app.use(cors()); 
@@ -62,6 +63,18 @@ result
 .then(data => response.json({success : data}))
 .catch(err => console.log(err));
 
+})
+
+app.get('search/:name', (request, response) => {
+    const { name } = request.params;
+    const db = dbService.getDBServiceInstance(); 
+    
+    const result = db.searchByName(name);
+
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err));
+      
 })
 
 const PORT = 5000 || process.env.PORT
